@@ -1,0 +1,36 @@
+package project;
+
+import java.util.Scanner;
+
+public class Slip1_30_Q1
+{	
+	public static int findFactorial(int number)
+	{
+		int fact=1;
+		for(int i=1;i<=number;i++)
+		{
+			fact=fact*i;
+		}
+		return fact;
+	}
+	
+
+
+
+public static void main(String[]args)
+{
+	Scanner sc=new Scanner(System.in);
+	System.out.println("enter the numbar to find factorial:");
+	int num=sc.nextInt();
+	
+	if(num<0)
+	{
+		System.out.println("cant fint negative numbaer factorial");
+	}
+	else
+	{
+		int result=findFactorial(num);
+		System.out.println(" factorial of "+num+"is:"+result);
+	}
+ }
+}
