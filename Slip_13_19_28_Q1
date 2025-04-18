@@ -1,0 +1,76 @@
+package assignment_1;
+
+import java.util.Scanner;
+
+public class Assignment1_2 {
+    public static void main(String[] args) 
+    {
+        Scanner sc = new Scanner(System.in);
+        int[][] matrix = new int[3][3];
+
+        // Read matrix elements from the user
+        System.out.println("Enter the elements in the matrix:");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                matrix[i][j] = sc.nextInt();
+            }
+        }
+
+        // Print the matrix
+        System.out.println("The matrix is:");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++)
+            {
+            	 System.out.print(matrix[i][j]+" ");
+            }
+            System.out.println();
+        }
+
+        // Calculate and print row, column, and diagonal sums
+        printRowSums(matrix);
+        printColumnSums(matrix);
+        printDiagonalSums(matrix);
+    }
+
+    // Function to calculate and print the sum of each row
+    public static void printRowSums(int[][] matrix) 
+    {
+        System.out.println("\nRow sums:");
+        for (int i = 0; i < 3; i++)
+        {
+            int rowSum = 0;
+            for (int j = 0; j < 3; j++) 
+            {
+                rowSum += matrix[i][j];
+            }
+            System.out.println("Sum of row " + (i + 1) + ": " + rowSum);
+        }
+    }
+
+    // Function to calculate and print the sum of each column
+    public static void printColumnSums(int[][] matrix) 
+    {
+        System.out.println("\nColumn sums:");
+        for (int j = 0; j < 3; j++) {
+            int colSum = 0;
+            for (int i = 0; i < 3; i++) {
+                colSum += matrix[i][j];
+            }
+            System.out.println("Sum of column " + (j + 1) + ": " + colSum);
+        }
+    }
+
+    // Function to calculate and print the sum of the main and anti-diagonal
+    public static void printDiagonalSums(int[][] matrix) 
+    {
+        int mainDiagSum = 0, antiDiagSum = 0;
+        for (int i = 0; i < 3; i++) 
+        {
+            mainDiagSum += matrix[i][i];
+            antiDiagSum += matrix[i][2 - i];
+        }
+        System.out.println("\nDiagonal sums:");
+        System.out.println("Main diagonal sum: " + mainDiagSum);
+        System.out.println("Anti diagonal sum: " + antiDiagSum);
+    }
+}
