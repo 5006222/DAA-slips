@@ -1,0 +1,115 @@
+package assignment_1;
+
+import java.util.Scanner;
+
+public class assignment1_7 
+{
+ public static void main(String[] args) 
+ {
+	Scanner sc = new Scanner(System.in);
+	
+	System.out.println("enter the number of row :");
+	int row=sc.nextInt();
+	
+	System.out.println("enter the number of col :");
+	int col=sc.nextInt();
+	
+	int[][] matrix1=new int[row][col];
+	int[][] matrix2=new int[row][col];
+	int[][] sumMatrix=new  int[row][col];
+	
+	System.out.println("Enter elements in  matrix1:");
+    for (int i = 0; i < row; i++) 
+    {
+        for (int j = 0; j < col; j++) 
+        {
+            matrix1[i][j] = sc.nextInt();
+        }
+    }
+    
+    System.out.println("Enter elements in  matrix2:");
+    for (int i = 0; i < row; i++) 
+    {
+        for (int j = 0; j < col; j++) 
+        {
+            matrix2[i][j] = sc.nextInt();
+        }
+    }
+    
+    System.out.println("\nThe first matrix is:");
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < col; j++)
+        {
+            System.out.print(matrix1[i][j] + " ");
+        }
+        System.out.println();
+    }
+
+System.out.println("\nThe second matrix is:");
+    for (int i = 0; i < row; i++) 
+    {
+        for (int j = 0; j < col; j++) 
+        {
+            System.out.print(matrix2[i][j] + " ");
+        }
+        System.out.println();
+    }
+       
+    addMatrices(matrix1, matrix2, sumMatrix, row, col);
+   
+    System.out.println("\nThe sum of the matrices is:");
+    for (int i = 0; i < row; i++) 
+    {
+        for (int j = 0; j < col; j++)
+        {
+            System.out.print(sumMatrix[i][j] + " ");
+        }
+        System.out.println();
+    }
+}
+ 
+ public static void addMatrices(int[][] matrix1, int[][] matrix2, int[][] sumMatrix, int row, int col) 
+ {
+     for (int i = 0; i < row; i++)
+     {
+         for (int j = 0; j < col; j++)
+         {
+             sumMatrix[i][j] = matrix1[i][j] + matrix2[i][j];
+         }
+     }
+ }
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+
+
