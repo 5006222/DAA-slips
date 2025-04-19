@@ -1,0 +1,31 @@
+package project;
+
+import java.util.PriorityQueue;
+
+public class Slip_Q2_13_28 {
+
+   public static void main(String[] args)
+    {    
+        int[] fs= {2,20,30,50};    
+        PriorityQueue<Integer> lst=new PriorityQueue<>();      
+        for (int i=0;i<fs.length;i++)
+        {
+            lst.add(fs[i]);
+        }       
+        int cnt=0;
+        while (lst.size() > 1)
+        {
+
+            int x1=lst.poll();
+
+            int x2=lst.poll();
+            int mergedFileSize = x1+x2;
+            lst.add(mergedFileSize);
+            cnt=cnt+ mergedFileSize;
+
+        }
+        System.out.println("Minimum cost for optimal merging: " + cnt);
+    }
+
+}
+
