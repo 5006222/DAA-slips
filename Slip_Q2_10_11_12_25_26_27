@@ -1,0 +1,63 @@
+package project;
+
+import java.util.Arrays;
+
+
+class Item
+{
+	int w,p;
+
+	public Item(int w, int p) {
+		//super();
+		this.w = w;
+		this.p = p;
+	}
+	
+}
+
+
+public class Slip_Q2_10_11_15_16 
+{
+	public static void main(String[]args)
+	{
+		Item[] items= {
+				new Item(5,15),
+				new Item(6, 19),
+	            new Item(3, 7),
+	            new Item(4, 5),
+	            new Item(1, 2),
+	            new Item(5, 11),
+	            new Item(2, 7)
+				
+		};
+		
+		int capacity=23;
+		
+		double maxProfit=knapSackByProfit(items,capacity);
+		System.out.println("the max profit is :"+maxProfit);
+	}
+
+	private static double knapSackByProfit(Item[] items, double capacity) 
+	{
+		Arrays.sort(items,(a,b)-> Double.compare((double)b.p/b.w, (double)a.p/a.w));
+		//Arrays.sort(items,(a,b)-> b.p-a.p);
+		double totalProfit=0.0;
+		
+		for(Item item:items)
+		{
+			if(capacity>=item.w)
+			{
+				totalProfit+=item.p;
+				capacity-=item.w;
+			}
+			else
+			{
+				totalProfit+=item.p*((double) capacity/item.w);
+				break;
+			}
+			
+		}
+		return totalProfit;
+	}
+
+}
