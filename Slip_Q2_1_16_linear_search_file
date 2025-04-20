@@ -1,0 +1,44 @@
+package project;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Slip_1_16_Q2 {
+    static int linearSearch(int[] arr, int key) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == key) {
+                return i; // found
+            }
+        }
+        return -1; // not found
+    }
+
+    public static void main(String[] args) throws IOException {
+        // Read numbers from file
+        Scanner fileScanner = new Scanner(new File("D:\\Eclipse\\project\\src\\project\\a.txt"));
+        int[] arr = new int[100]; // assuming max 100 numbers
+        int count = 0;
+
+        while (fileScanner.hasNextInt())
+        {
+            arr[count] = fileScanner.nextInt();
+            count++;
+        }
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number to search: ");
+        int key = sc.nextInt();
+
+        int index = linearSearch(arr, key);
+
+        if (index != -1) {
+            System.out.println("✅ Number found at index: " + index);
+        } else {
+            System.out.println("❌ Number not found.");
+        }
+        System.out.println("\n📊 Time Complexity of Linear Search:");
+        System.out.println("➡ Best Case   : O(1)   (If the number is at the beginning)");
+        System.out.println("➡ Worst Case  : O(n)   (If the number is at the end or not found)");
+        System.out.println("➡ Average Case: O(n)   (On average, somewhere in the middle)");
+    }
+}
