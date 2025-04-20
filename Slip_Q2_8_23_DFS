@@ -1,0 +1,76 @@
+package project;
+
+import java.util.*;
+
+public class DFSExample {
+
+    static class Graph {
+        int vertices;
+        LinkedList<Integer>[] adjList;
+
+        // Constructor
+        Graph(int v) {
+            vertices = v;
+            adjList = new LinkedList[v];
+
+            for (int i = 0; i < v; i++) {
+                adjList[i] = new LinkedList<>();
+            }
+        }
+
+        // Function to add edge
+        void addEdge(int src, int dest) {
+            adjList[src].add(dest);
+            adjList[dest].add(src); // For undirected graph
+        }
+
+        // DFS function
+        void DFSUtil(int v, boolean[] visited) {
+            visited[v] = true;
+            System.out.print(v + " ");
+
+            for (int neighbor : adjList[v]) {
+                if (!visited[neighbor]) {
+                    DFSUtil(neighbor, visited);
+                }
+            }
+        }
+
+        // DFS traversal from a given source
+        void DFS(int start) {
+            boolean[] visited = new boolean[vertices];
+            System.out.print("DFS Traversal starting from vertex " + start + ": ");
+            DFSUtil(start, visited);
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of vertices: ");
+        int v = sc.nextInt();
+
+        System.out.print("Enter number of edges: ");
+        int e = sc.nextInt();
+
+        Graph g = new Graph(v);
+
+        System.out.println("Enter edges (format: src dest):");
+        for (int i = 0; i < e; i++) {
+            int src = sc.nextInt();
+            int dest = sc.nextInt();
+            g.addEdge(src, dest);
+        }
+
+        System.out.print("Enter starting vertex for DFS: ");
+        int start = sc.nextInt();
+
+        g.DFS(start);
+
+        System.out.println("\n\n📊 Time Complexity of DFS:");
+        System.out.println("Time Complexity: O(V + E)");
+        System.out.println("Where V = number of vertices, E = number of edges");
+
+        sc.close();
+    }
+}
