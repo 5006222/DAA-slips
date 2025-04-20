@@ -1,0 +1,61 @@
+package project;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class BinarySearchExample {
+
+    static int binarySearch(int[] arr, int key) {
+        int left = 0, right = arr.length - 1;
+        
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (arr[mid] == key) {
+                return mid;
+            }
+            if (arr[mid] > key) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        
+        return -1;
+    }
+
+    public static void main(String[] args) throws IOException {
+        Scanner fileScanner = new Scanner(new File("D:\\Eclipse\\project\\src\\project\\a.txt"));
+        int[] arr = new int[100];
+        int count = 0;
+
+        while (fileScanner.hasNextInt()) {
+            arr[count] = fileScanner.nextInt();
+            count++;
+        }
+        fileScanner.close();
+
+        Arrays.sort(arr);
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number to search: ");
+        int key = sc.nextInt();
+
+        int index = binarySearch(arr, key);
+
+        if (index != -1) {
+            System.out.println("✅ Number found at index: " + index);
+        } else {
+            System.out.println("❌ Number not found.");
+        }
+
+        System.out.println("\n📊 Time Complexity of Binary Search:");
+        System.out.println("➡ Best Case   : O(1)");
+        System.out.println("➡ Worst Case  : O(log n)");
+        System.out.println("➡ Average Case: O(log n)");
+
+        sc.close();
+    }
+}
