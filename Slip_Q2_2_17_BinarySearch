@@ -5,56 +5,55 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class BinarySearchExample {
+public class binarySearch {
 
-    static int binarySearch(int[] arr, int key) {
-        int left = 0, right = arr.length - 1;
-        
+    public static int binarySearchElement(int[] arr, int key, int n) {
+        int left = 0, right = n - 1;
+
         while (left <= right) {
             int mid = left + (right - left) / 2;
 
-            if (arr[mid] == key) {
+            if (arr[mid] == key)
                 return mid;
-            }
-            if (arr[mid] > key) {
+
+            if (arr[mid] > key)
                 right = mid - 1;
-            } else {
+            else
                 left = mid + 1;
-            }
         }
-        
         return -1;
     }
 
     public static void main(String[] args) throws IOException {
         Scanner fileScanner = new Scanner(new File("D:\\Eclipse\\project\\src\\project\\a.txt"));
+
         int[] arr = new int[100];
-        int count = 0;
+        int cnt = 0;
 
         while (fileScanner.hasNextInt()) {
-            arr[count] = fileScanner.nextInt();
-            count++;
+            arr[cnt] = fileScanner.nextInt();
+            cnt++;
         }
+
         fileScanner.close();
 
-        Arrays.sort(arr);
+        Arrays.sort(arr, 0, cnt);
 
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter number to search: ");
-        int key = sc.nextInt();
+        System.out.print("Enter element to search: ");
+        int search = sc.nextInt();
 
-        int index = binarySearch(arr, key);
+        int index = binarySearchElement(arr, search, cnt);
 
-        if (index != -1) {
-            System.out.println("✅ Number found at index: " + index);
-        } else {
-            System.out.println("❌ Number not found.");
-        }
+        if (index == -1)
+            System.out.println("Element not found");
+        else
+            System.out.println(search + " element found at index " + index);
 
-        System.out.println("\n📊 Time Complexity of Binary Search:");
-        System.out.println("➡ Best Case   : O(1)");
-        System.out.println("➡ Worst Case  : O(log n)");
-        System.out.println("➡ Average Case: O(log n)");
+        System.out.println("Time Complexity of Binary Search:");
+        System.out.println("Best Case: O(1)");
+        System.out.println("Worst Case: O(log n)");
+        System.out.println("Average Case: O(log n)");
 
         sc.close();
     }
